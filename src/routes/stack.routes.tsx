@@ -3,6 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Home } from '../pages/Home';
 import { Intro } from '../pages/Intro';
+import { Login } from '../pages/Auth/Login';
+import { Register } from '../pages/Auth/Register';
 
 import colors from '../styles/colors';
 
@@ -17,6 +19,8 @@ const AppRoutes: React.FC = () => (
       },
     }}
   >
+    <stackRoutes.Screen name="Login" component={Login} />
+    <stackRoutes.Screen name="Register" component={Register} />
     <stackRoutes.Screen name="Intro" component={Intro} />
     <stackRoutes.Screen name="Home" component={Home} />
   </stackRoutes.Navigator>
