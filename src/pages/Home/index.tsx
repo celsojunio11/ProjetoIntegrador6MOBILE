@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import { RectButton } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -7,6 +8,12 @@ import colors from '../../styles/colors';
 import styles from './styles';
 
 export const Home = () => {
+  const navigation = useNavigation();
+
+  const handleGoToClassPage = () => {
+    navigation.navigate('Class' as never, { classId: 1 } as never);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -20,7 +27,7 @@ export const Home = () => {
 
         <ScrollView showsVerticalScrollIndicator={false} style={styles.cardsContainer}>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((_, i) => (
-            <View key={i} style={styles.card}>
+            <RectButton key={i} style={styles.card} onPress={handleGoToClassPage}>
               <Text style={styles.classTitle} numberOfLines={1}>
                 Algoritmos e técnicas de programação
               </Text>
@@ -44,7 +51,7 @@ export const Home = () => {
                   <Text style={styles.modality}>presencial</Text>
                 </View>
               </View>
-            </View>
+            </RectButton>
           ))}
         </ScrollView>
 
